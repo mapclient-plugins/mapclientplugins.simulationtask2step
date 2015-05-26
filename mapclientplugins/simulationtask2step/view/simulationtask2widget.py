@@ -19,10 +19,10 @@ from matplotlib.backends.backend_qt4agg import (
 from matplotlib.figure import Figure
 from matplotlib.backend_bases import key_press_handler
 
-from mapclientplugins.eulerintegration1step.view.ui_eulerintegrationwidget import Ui_EulerIntegrationWidget
-from mapclientplugins.eulerintegration1step.sedml.execute import ExecuteSedml
+from mapclientplugins.simulationtask2step.view.ui_eulerintegrationwidget import Ui_SimulationTask2Widget
+from mapclientplugins.simulationtask2step.sedml.execute import ExecuteSedml
 
-class EulerIntegrationWidget(QtGui.QWidget):
+class SimulationTask2Widget(QtGui.QWidget):
     '''
     classdocs
     '''
@@ -32,8 +32,8 @@ class EulerIntegrationWidget(QtGui.QWidget):
         '''
         Constructor
         '''
-	super(EulerIntegrationWidget, self).__init__(parent)
-        self._ui = Ui_EulerIntegrationWidget()
+	super(SimulatonTask2Widget, self).__init__(parent)
+        self._ui = Ui_SimulationTask2Widget()
         self._ui.setupUi(self)
 	self.sedml = ExecuteSedml()
 	# create the plot

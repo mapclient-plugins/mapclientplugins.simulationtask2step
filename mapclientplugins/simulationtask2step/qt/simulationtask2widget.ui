@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>EulerIntegrationWidget</class>
- <widget class="QWidget" name="EulerIntegrationWidget">
+ <class>SimulationTask2Widget</class>
+ <widget class="QWidget" name="SimulationTask2Widget">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -46,7 +46,7 @@ QToolBox {
       <set>QDockWidget::NoDockWidgetFeatures</set>
      </property>
      <property name="windowTitle">
-      <string>Euler integration example</string>
+      <string>Simulation Task 2</string>
      </property>
      <widget class="QWidget" name="dockWidgetContents">
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -77,13 +77,13 @@ QToolBox {
             <item>
              <widget class="QDoubleSpinBox" name="stepSizeSpinBox">
               <property name="decimals">
-               <number>4</number>
+               <number>5</number>
               </property>
               <property name="maximum">
                <double>1.000000000000000</double>
               </property>
               <property name="singleStep">
-               <double>0.001000000000000</double>
+               <double>0.010000000000000</double>
               </property>
               <property name="value">
                <double>0.100000000000000</double>
@@ -91,6 +91,41 @@ QToolBox {
              </widget>
             </item>
            </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>Integration method:</string>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+         <property name="checkable">
+          <bool>false</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QRadioButton" name="radioButton">
+            <property name="text">
+             <string>Euler</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_2">
+            <property name="text">
+             <string>CVODE</string>
+            </property>
+            <property name="checked">
+             <bool>false</bool>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
