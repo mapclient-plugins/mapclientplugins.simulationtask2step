@@ -108,7 +108,7 @@ QToolBox {
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <widget class="QRadioButton" name="radioButton">
+           <widget class="QRadioButton" name="radioButtonEuler">
             <property name="text">
              <string>Euler</string>
             </property>
@@ -118,7 +118,7 @@ QToolBox {
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="radioButton_2">
+           <widget class="QRadioButton" name="radioButtonCvode">
             <property name="text">
              <string>CVODE</string>
             </property>

@@ -19,7 +19,7 @@ from matplotlib.backends.backend_qt4agg import (
 from matplotlib.figure import Figure
 from matplotlib.backend_bases import key_press_handler
 
-from mapclientplugins.simulationtask2step.view.ui_eulerintegrationwidget import Ui_SimulationTask2Widget
+from mapclientplugins.simulationtask2step.view.ui_simulationtask2widget import Ui_SimulationTask2Widget
 from mapclientplugins.simulationtask2step.sedml.execute import ExecuteSedml
 
 class SimulationTask2Widget(QtGui.QWidget):
@@ -32,7 +32,7 @@ class SimulationTask2Widget(QtGui.QWidget):
         '''
         Constructor
         '''
-	super(SimulatonTask2Widget, self).__init__(parent)
+	super(SimulationTask2Widget, self).__init__(parent)
         self._ui = Ui_SimulationTask2Widget()
         self._ui.setupUi(self)
 	self.sedml = ExecuteSedml()
@@ -56,8 +56,6 @@ class SimulationTask2Widget(QtGui.QWidget):
 
     def createAxes(self):
 	self.axes = self.fig.add_subplot(111)
-	self.drawSineFunction()
-	self.axes.legend()
 	self.canvas.draw()
         
     def _makeConnections(self):
@@ -65,12 +63,6 @@ class SimulationTask2Widget(QtGui.QWidget):
         self._ui.simulateButton.clicked.connect(self._simulateButtonClicked)
         self._ui.clearButton.clicked.connect(self._clearButtonClicked)
         
-    def drawSineFunction(self):
-	# draw sine function
-	t = np.arange(0.0, 2.0*np.pi, 0.01)
-	s = np.sin(t)
-	self.axes.plot(t, s, label="sin(t)")
-
     def on_key_press(self, event):
         print('you pressed', event.key)
         # implement the default mpl key press events described at
@@ -80,19 +72,23 @@ class SimulationTask2Widget(QtGui.QWidget):
     def _simulateButtonClicked(self):
         print "Simulate clicked"
 	h = self._ui.stepSizeSpinBox.value()
-	data = self.sedml.execute(h)
-	if data == None:
-		return	
-        #self.axes.plot(self.x, self.y, 'ro')
-	data1 = np.arange(20).reshape([4, 5]).copy()
-        #self.axes.imshow(data1, interpolation='nearest')
+	# default to Euler
+	methodId = "KISAO:0000030"
+	methodLabel = "Euler"
+	if self._ui.radioButtonCvode.isChecked():
+		methodId = "KISAO:0000019"
+		methodLabel = "CVODE"
+	results = self.sedml.execute(h, methodId)
+	if results == None:
+		return
+	#print results	
 	#print data
 	#print data.shape
 	#print data.dtype.names
 	#print data['X']
         #self.axes.plot(data['X'], data['sinX'], label='sin(x)')
-	title = "h=" + str(h)
-        self.axes.plot(data['X'], data['Derivative_approximation'], label=title)
+	title = "h=" + str(h) + "; " + methodLabel + "; time=" + str(results['time'])
+        self.axes.plot(results['data']['t'], results['data']['Vm'], label=title)
 	self.axes.legend()
         self.canvas.draw()
     

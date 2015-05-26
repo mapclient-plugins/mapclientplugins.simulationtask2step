@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'simulationtask2widget.ui'
 #
-# Created: Wed May 27 00:44:08 2015
+# Created: Wed May 27 02:03:15 2015
 #      by: pyside-uic 0.2.15 running on PySide 1.2.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -69,14 +69,14 @@ class Ui_SimulationTask2Widget(object):
         self.groupBox.setObjectName("groupBox")
         self.verticalLayout_3 = QtGui.QVBoxLayout(self.groupBox)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.radioButton = QtGui.QRadioButton(self.groupBox)
-        self.radioButton.setChecked(True)
-        self.radioButton.setObjectName("radioButton")
-        self.verticalLayout_3.addWidget(self.radioButton)
-        self.radioButton_2 = QtGui.QRadioButton(self.groupBox)
-        self.radioButton_2.setChecked(False)
-        self.radioButton_2.setObjectName("radioButton_2")
-        self.verticalLayout_3.addWidget(self.radioButton_2)
+        self.radioButtonEuler = QtGui.QRadioButton(self.groupBox)
+        self.radioButtonEuler.setChecked(True)
+        self.radioButtonEuler.setObjectName("radioButtonEuler")
+        self.verticalLayout_3.addWidget(self.radioButtonEuler)
+        self.radioButtonCvode = QtGui.QRadioButton(self.groupBox)
+        self.radioButtonCvode.setChecked(False)
+        self.radioButtonCvode.setObjectName("radioButtonCvode")
+        self.verticalLayout_3.addWidget(self.radioButtonCvode)
         self.verticalLayout.addWidget(self.groupBox)
         self.simulateButton = QtGui.QPushButton(self.dockWidgetContents)
         self.simulateButton.setObjectName("simulateButton")
@@ -108,8 +108,8 @@ class Ui_SimulationTask2Widget(object):
         self.dockWidget.setWindowTitle(QtGui.QApplication.translate("SimulationTask2Widget", "Simulation Task 2", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("SimulationTask2Widget", "h:", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox.setTitle(QtGui.QApplication.translate("SimulationTask2Widget", "Integration method:", None, QtGui.QApplication.UnicodeUTF8))
-        self.radioButton.setText(QtGui.QApplication.translate("SimulationTask2Widget", "Euler", None, QtGui.QApplication.UnicodeUTF8))
-        self.radioButton_2.setText(QtGui.QApplication.translate("SimulationTask2Widget", "CVODE", None, QtGui.QApplication.UnicodeUTF8))
+        self.radioButtonEuler.setText(QtGui.QApplication.translate("SimulationTask2Widget", "Euler", None, QtGui.QApplication.UnicodeUTF8))
+        self.radioButtonCvode.setText(QtGui.QApplication.translate("SimulationTask2Widget", "CVODE", None, QtGui.QApplication.UnicodeUTF8))
         self.simulateButton.setText(QtGui.QApplication.translate("SimulationTask2Widget", "Simulate", None, QtGui.QApplication.UnicodeUTF8))
         self.clearButton.setText(QtGui.QApplication.translate("SimulationTask2Widget", "Clear graph", None, QtGui.QApplication.UnicodeUTF8))
         self.doneButton.setText(QtGui.QApplication.translate("SimulationTask2Widget", "Done", None, QtGui.QApplication.UnicodeUTF8))
