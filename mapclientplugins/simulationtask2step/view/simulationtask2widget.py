@@ -56,6 +56,7 @@ class SimulationTask2Widget(QtGui.QWidget):
 
     def createAxes(self):
 	self.axes = self.fig.add_subplot(111)
+	self.drawSineFunction()
 	self.canvas.draw()
         
     def _makeConnections(self):
@@ -63,6 +64,12 @@ class SimulationTask2Widget(QtGui.QWidget):
         self._ui.simulateButton.clicked.connect(self._simulateButtonClicked)
         self._ui.clearButton.clicked.connect(self._clearButtonClicked)
         
+    def drawSineFunction(self):
+	# draw sine function
+	t = np.arange(0.0, 2.0*np.pi, 0.01)
+	s = np.sin(t)
+	self.axes.plot(t, s, label="sin(t)")
+
     def on_key_press(self, event):
         print('you pressed', event.key)
         # implement the default mpl key press events described at
@@ -72,13 +79,14 @@ class SimulationTask2Widget(QtGui.QWidget):
     def _simulateButtonClicked(self):
         print "Simulate clicked"
 	h = self._ui.stepSizeSpinBox.value()
+        n = self._ui.nSpinBox.value()
 	# default to Euler
 	methodId = "KISAO:0000030"
 	methodLabel = "Euler"
 	if self._ui.radioButtonCvode.isChecked():
 		methodId = "KISAO:0000019"
 		methodLabel = "CVODE"
-	results = self.sedml.execute(h, methodId)
+	results = self.sedml.execute(h, n, methodId)
 	if results == None:
 		return
 	#print results	
@@ -88,7 +96,7 @@ class SimulationTask2Widget(QtGui.QWidget):
 	#print data['X']
         #self.axes.plot(data['X'], data['sinX'], label='sin(x)')
 	title = "h=" + str(h) + "; " + methodLabel + "; time=" + str(results['time'])
-        self.axes.plot(results['data']['t'], results['data']['Vm'], label=title)
+        self.axes.plot(results['data']['X'], results['data']['Derivative_approximation'], marker="o", label=title)
 	self.axes.legend()
         self.canvas.draw()
     

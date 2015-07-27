@@ -14,9 +14,9 @@ class ExecuteSedml():
         '''
 	
 	self.simulationDataRoot = u"/home/abi/projects/simulation-data"
-	self.template = self.simulationDataRoot + u"/sed-ml-templates/ICC-model-simulation.xml"
+	self.template = self.simulationDataRoot + u"/sed-ml-templates/cvode-with-sine-model.xml"
 
-    def execute(self, stepSize, methodId):
+    def execute(self, stepSize, n, methodId):
 	'''
 	http://stackoverflow.com/questions/6385686/python-technique-or-simple-templating-system-for-plain-text-output
 	'''
@@ -27,7 +27,7 @@ class ExecuteSedml():
 	#read it
 	src = Template( filein.read() )
 	#document data
-	d={ 'MAX_STEP_SIZE':stepSize, 'INTEGRATION_METHOD':methodId }
+	d={ 'MAX_STEP_SIZE':stepSize, 'NUMBER_OF_POINTS': n, 'INTEGRATION_METHOD':methodId }
 	#do the substitution
 	result = src.substitute(d)
 	tmpFile = "/tmp/andre-tmp-sedml.xml"
