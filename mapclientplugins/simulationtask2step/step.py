@@ -29,7 +29,7 @@ class SimulationTask2Step(WorkflowStepMountPoint):
         # Config:
         self._config = {}
         self._config['identifier'] = ''
-	self._view = None
+        self._view = None
 
 
     def execute(self):
@@ -38,9 +38,11 @@ class SimulationTask2Step(WorkflowStepMountPoint):
         Make sure you call the _doneExecution() method when finished.  This method
         may be connected up to a button in a widget for example.
         '''
-	if self._view is None:
+        if self._view is None:
             self._view = SimulationTask2Widget()
             self._view.registerDoneExecution(self._doneExecution)
+            
+        self._view.setSimulationRoot(self._portData0)
         self._setCurrentWidget(self._view)
 
     def setPortData(self, index, dataIn):
