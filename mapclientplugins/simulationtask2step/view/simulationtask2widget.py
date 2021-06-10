@@ -3,7 +3,7 @@ Created on May 26, 2015
 
 @author: andre
 '''
-from PySide import QtGui, QtCore
+from PySide2 import QtCore, QtWidgets
 
 import numpy as np
 
@@ -22,7 +22,7 @@ from matplotlib.backend_bases import key_press_handler
 from mapclientplugins.simulationtask2step.view.ui_simulationtask2widget import Ui_SimulationTask2Widget
 from mapclientplugins.simulationtask2step.sedml.execute import ExecuteSedml
 
-class SimulationTask2Widget(QtGui.QWidget):
+class SimulationTask2Widget(QtWidgets.QWidget):
     '''
     classdocs
     '''
@@ -45,7 +45,7 @@ class SimulationTask2Widget(QtGui.QWidget):
         self.mpl_toolbar = NavigationToolbar(self.canvas, self._ui.plotPane)
         self.canvas.mpl_connect('key_press_event', self.on_key_press)
 
-        vbox = QtGui.QVBoxLayout()
+        vbox = QtWidgets.QVBoxLayout()
         vbox.addWidget(self.canvas)  # the matplotlib canvas
         vbox.addWidget(self.mpl_toolbar)
         self._ui.plotPane.setLayout(vbox)
