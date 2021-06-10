@@ -8,11 +8,14 @@ from PySide2 import QtCore, QtWidgets
 import numpy as np
 
 import matplotlib
-matplotlib.use('Qt4Agg')
-matplotlib.rcParams['backend.qt4']='PySide'
-import pylab
+# matplotlib.use('Qt4Agg')
+# matplotlib.rcParams['backend.qt4']='PySide'
+matplotlib.use('Qt5Agg')
 
-from matplotlib.backends.backend_qt4agg import (
+# from matplotlib.backends.backend_qt4agg import (
+#     FigureCanvasQTAgg as FigureCanvas,
+#     NavigationToolbar2QT as NavigationToolbar)
+from matplotlib.backends.backend_qt5agg import (
     FigureCanvasQTAgg as FigureCanvas,
     NavigationToolbar2QT as NavigationToolbar)
 
