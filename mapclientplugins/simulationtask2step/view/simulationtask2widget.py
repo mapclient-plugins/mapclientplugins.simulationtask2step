@@ -9,13 +9,8 @@ import numpy as np
 
 import matplotlib
 
-# matplotlib.use('Qt4Agg')
-# matplotlib.rcParams['backend.qt4']='PySide'
 matplotlib.use('Qt5Agg')
 
-# from matplotlib.backends.backend_qt4agg import (
-#     FigureCanvasQTAgg as FigureCanvas,
-#     NavigationToolbar2QT as NavigationToolbar)
 from matplotlib.backends.backend_qt5agg import (
     FigureCanvasQTAgg as FigureCanvas,
     NavigationToolbar2QT as NavigationToolbar)
@@ -53,7 +48,6 @@ class SimulationTask2Widget(QtWidgets.QWidget):
         vbox.addWidget(self.canvas)  # the matplotlib canvas
         vbox.addWidget(self.mpl_toolbar)
         self._ui.plotPane.setLayout(vbox)
-        # self.setCentralWidget(self.main_frame)
 
         self.createAxes()
         self._makeConnections()
@@ -94,12 +88,6 @@ class SimulationTask2Widget(QtWidgets.QWidget):
         results = self.sedml.execute(h, n, methodId)
         if results == None:
             return
-        # print results
-        # print data
-        # print data.shape
-        # print data.dtype.names
-        # print data['X']
-        # self.axes.plot(data['X'], data['sinX'], label='sin(x)')
         title = "h=" + str(h) + "; " + methodLabel + "; time=" + str(results['time'])
         self.axes.plot(results['data']['X'], results['data']['Derivative_approximation'], marker="o", label=title)
         self.axes.legend()
