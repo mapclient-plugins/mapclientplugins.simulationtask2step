@@ -2,7 +2,7 @@
 MAP Client Plugin
 '''
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 __author__ = 'Andre'
 __stepname__ = 'DTP Computation Physiology - Simulation Task 2'
 __location__ = ''
