@@ -3,7 +3,7 @@ Created on May 26, 2015
 
 @author: andre
 '''
-from PySide2 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 import numpy as np
 
